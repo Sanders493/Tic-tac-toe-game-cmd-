@@ -2,14 +2,31 @@ def display_how_to_play() -> None:
     '''
     Displays the game instructions
     '''
-    try:
-        with open('HowToPlay.txt', 'r') as file:
-            for line in file.readline():
-                print(line)
-    except FileNotFoundError:
-        print('HowToPlay file missing')
-    except Exception as e:
-        print(e)
+    display = True
+    
+    while display:
+        print('How To Play')
+        print('-------------')
+        try:
+            with open('HowToPlay.txt', 'r') as file:
+                lines = file.readlines()
+                for line in lines:
+                    print(line)
+        except FileNotFoundError:
+            print('HowToPlay file missing')
+        except Exception as e:
+            print(e)
+            
+        user_entry = input('Press Enter to go back to the main menu')
+        display = False
+        clear_console()
+
+def clear_console() -> None:
+    '''
+    Clears the console
+    '''
+    print("\033[H\033[2J");  
+      
 
 def welcome_message() -> None:
     '''
@@ -40,8 +57,9 @@ def run_game() -> None:
             case 'singleplayer' | 's':
                 pass
             case 'how to play' | 'h':
-                pass
+                display_how_to_play()
             case 'exit' | 'e':
                 run = False
             case _:
                 continue
+        clear_console()
