@@ -1,3 +1,16 @@
+def display_how_to_play() -> None:
+    '''
+    Displays the game instructions
+    '''
+    try:
+        with open('HowToPlay.txt', 'r') as file:
+            for line in file.readline():
+                print(line)
+    except FileNotFoundError:
+        print('HowToPlay file missing')
+    except Exception as e:
+        print(e)
+
 def welcome_message() -> None:
     '''
     Welcomes the user and prints patch notes
