@@ -1,5 +1,9 @@
+from game import *
+            
 def main() -> None:
-    pass
+    welcome_message()
+    run_game()
+    farewell_message()
 
-if __name__ == 'main':
+if __name__ == '__main__':
     main()
