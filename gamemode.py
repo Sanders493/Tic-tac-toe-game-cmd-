@@ -1,2 +1,10 @@
+from player import Player
+from board import Board
 class GameMode:
-    pass
+    '''
+    Default Class for gamemodes
+    '''
+    
+    def __init__(self) -> None:
+        player_list: list[Player] = []
+        board: Board = Board()
