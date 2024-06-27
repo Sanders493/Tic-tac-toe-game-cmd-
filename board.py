@@ -1,3 +1,4 @@
+from player import Player
 class Board:
     '''
     implements the behaviors and attributes of a Board
@@ -34,15 +35,30 @@ class Board:
         print("+---+---+---+")
         
     def check_piece(self, position: int) -> bool:
+        '''
+        Checks a square is open
+        '''
         if self.pieces[position - 1] == 'X' or self.pieces[position - 1] == 'O':
             return False
         return True
     
+    def place_piece(self, player: Player, position: int) -> bool:
+        '''
+        Places a piece on the board
+        '''
+        if self.check_piece(position):
+            self.pieces[position - 1] = player.symbol
+            return True
+        else:
+            print('This square has already been used!')
+            return False 
 
 
 if __name__ == '__main__':
-    board = Board()
-    board.print_board()
+    board = Board() 
+    player1 = Player('sanders', 'X')
+
+    
     
     
     
