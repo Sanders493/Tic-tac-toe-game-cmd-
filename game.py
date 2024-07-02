@@ -1,3 +1,4 @@
+from multiplayer import Multiplayer
 def display_how_to_play() -> None:
     '''
     Displays the game instructions
@@ -29,23 +30,20 @@ def clear_console() -> None:
       
 
 def welcome_message() -> None:
-    '''
-    Welcomes the user and prints patch notes
-    '''
+    """_summary_ Welcomes the user and prints patch notes
+    """
     print('Welcome to tic-tac-toe game by Sanders')
     print('patch 1.0.0\n')
  
 def farewell_message() -> None:
-    '''
-    Prints farewell message
-    '''  
+    """_summary_ Prints farewell message
+    """
     print('\nThank you trying this game')
     print('More by Sanders at https://github.com/users/Sanders493')
     
 def run_game() -> None:
-    '''
-    Runs the game until the user enters exit
-    '''
+    """_summary_ Runs the game until the user enters exit
+    """
     run = True
     while run:
         user_entry = input('Select an option by typing the name: \n\n- Multiplayer\n- Singleplayer\n- How to play\n- Exit\n')
@@ -53,7 +51,12 @@ def run_game() -> None:
         
         match user_entry:
             case 'multiplayer' | 'm':
-                pass
+                game: Multiplayer = Multiplayer()
+                gamelog: dict[str, object] = game.run()
+                print('Gamelog:')
+                for game in gamelog.keys():
+                    print(f'{game}: {game[0]} in {game[1]} moves')
+                input('Press Enter to continue: ')
             case 'singleplayer' | 's':
                 pass
             case 'how to play' | 'h':
