@@ -9,26 +9,58 @@ class GameMode:
         self.player_list: list[Player] = []
         self.board: Board = Board()
         
-    def checkBoard(self, player: Player) -> bool:
+    def check_board(self, player: Player) -> bool:
         '''
         Checks if a player has won
         '''
-        pass
-    def checkHorizontals(self) -> bool:
-        '''
-        Checks the horizontals of the board
-        '''
+        piece = player.symbol
+        return self.check_verticals(player, piece) or self.check_horizontals(player, piece) or self.check_diagonals(player, piece)
+    
+    def check_horizontals(self, piece: str) -> bool:
+        """_summary_ checks the horizontal of the board
+
+        Args:
+            piece (str): the piece we're looking for
+
+        Returns:
+            bool: wether or not the place has 3 alligned pieces on a horizontal
+        """
         for i in range(9, 3):
-            if self.board.pieces[i] == self.board.pieces[i + 1] == self.board.pieces[i + 2]:
-                return True
+            if self.board.pieces[i] == piece:
+                if self.board.pieces[i] == self.board.pieces[i + 1] and self.board.pieces[i] == self.board.pieces[i + 2]:
+                    return True
         return False
     
-    def checkVerticals(self) -> bool:
-        '''
-        Checks the verticals of the board
-        '''
-       # for i in range(9, 3):
+    def check_verticals(self, piece: str) -> bool:
+        """_summary_ checks the verticals of the board
+
+        Args:
+            piece (str): the piece we're looking for
+
+        Returns:
+            bool: wether or not the place has 3 alligned pieces on a vertical
+        """
+        for i in range(3):
+           if self.board.pieces[i] == piece:
+               if self.board.pieces[i] == self.board.pieces[i + 3] and self.board.pieces[i] == self.board.pieces[i + 6]:
+                   return True
+        return False
             
     
-    def checkDiagonals() -> bool:
-        pass
+    def check_diagonals(self, piece: str) -> bool:
+        """_summary_ checks the diagonals of the board
+
+        Args:
+            piece (str): the piece we're looking for
+
+        Returns:
+            bool: wether or not the place has 3 alligned pieces on a diagonal
+        """
+        
+        if self.board.pieces[0] == piece:
+            if self.board.pieces[0] == self.board.pieces[4] and self.board.pieces[0] == self.board.pieces[8]:
+                return True
+        if self.board.pieces[2] == piece:
+            if self.board.pieces[2] == self.board.pieces[4] and self.board.pieces[2] == self.board.pieces[6]:
+                return True
+        return False

@@ -34,7 +34,7 @@ class Board:
         '''  
         print("+---+---+---+")
         
-    def check_piece(self, position: int) -> bool:
+    def _check_piece(self, position: int) -> bool:
         '''
         Checks a square is open
         '''
@@ -46,7 +46,7 @@ class Board:
         '''
         Places a piece on the board
         '''
-        if self.check_piece(position):
+        if self._check_piece(position):
             self.pieces[position - 1] = player.symbol
             return True
         else:
@@ -57,6 +57,9 @@ class Board:
 if __name__ == '__main__':
     board = Board() 
     player1 = Player('sanders', 'X')
+    board.print_board()
+    board.place_piece(player1, 5)
+    board.print_board()
 
     
     
