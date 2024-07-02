@@ -1,3 +1,4 @@
+from multiplayer import Multiplayer
 def display_how_to_play() -> None:
     '''
     Displays the game instructions
@@ -50,7 +51,12 @@ def run_game() -> None:
         
         match user_entry:
             case 'multiplayer' | 'm':
-                pass
+                game: Multiplayer = Multiplayer()
+                gamelog: dict[str, object] = game.run()
+                print('Gamelog:')
+                for game in gamelog.keys():
+                    print(f'{game}: {game[0]} in {game[1]} moves')
+                input('Press Enter to continue: ')
             case 'singleplayer' | 's':
                 pass
             case 'how to play' | 'h':

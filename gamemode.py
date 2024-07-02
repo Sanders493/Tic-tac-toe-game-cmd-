@@ -25,7 +25,7 @@ class GameMode:
         Returns:
             bool: wether or not the place has 3 alligned pieces on a horizontal
         """
-        for i in range(9, 3):
+        for i in range(0, 9, 3):
             if self.board.pieces[i] == piece:
                 if self.board.pieces[i] == self.board.pieces[i + 1] and self.board.pieces[i] == self.board.pieces[i + 2]:
                     return True
@@ -73,8 +73,9 @@ class GameMode:
         Returns:
             bool: where or not the move was legal
         """
-        position: int = player.get_position()
         print(f"{player.name}'s turn")
+        self.board.print_board()
+        position: int = player.get_position()
         return self.board.place_piece(player, position)
     
 if __name__ == '__main__':

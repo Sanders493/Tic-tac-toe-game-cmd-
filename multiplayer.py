@@ -46,6 +46,7 @@ class Multiplayer(GameMode):
         won: bool = False
         again: bool = False
         winner: str = "draw"
+        
         while turn <= 9 and not won:
             if turn % 2 != 0:
                 done = self.take_turn(self.player1)
@@ -62,7 +63,11 @@ class Multiplayer(GameMode):
             elif self.check_board(self.player2):
                 won = True
                 winner = self.player2.name
-                
+        if won:
+            print(f'{winner} won the game')       
+        else:
+            print('the game ended in a draw')
+        self.board.print_board()
         user_entry: str = input("Do you want to play another game (Y/N): ").upper()
         
         if user_entry[0] == 'Y':
@@ -83,11 +88,7 @@ class Multiplayer(GameMode):
             run = result[0]
             gamelog["game" + str(game_num)] = result[1]
             game_num += 1
+            self.board.reset()
+            self.player1, self.player2 = self.player2, self.player1
             
         return gamelog
-        
-    
-if __name__ == '__main__':
-    game: GameMode = Multiplayer()
-    
-    game.run()
