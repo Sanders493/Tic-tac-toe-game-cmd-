@@ -55,7 +55,7 @@ def run_game() -> None:
                 gamelog: dict[str, object] = game.run()
                 print('Gamelog:')
                 for game, info in gamelog.items():
-                    print(f'{game}: {game[info[0]]} in {game[info[1]]} moves')
+                    print(f'{game}: {info[0]} in {info[1]} moves')
                 input('Press Enter to continue: ')
             case 'singleplayer' | 's':
                 pass
