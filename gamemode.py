@@ -14,7 +14,7 @@ class GameMode:
         Checks if a player has won
         '''
         piece = player.symbol
-        return self.check_verticals(player, piece) or self.check_horizontals(player, piece) or self.check_diagonals(player, piece)
+        return self.check_verticals(piece) or self.check_horizontals(piece) or self.check_diagonals(piece)
     
     def check_horizontals(self, piece: str) -> bool:
         """_summary_ checks the horizontal of the board
@@ -64,3 +64,15 @@ class GameMode:
             if self.board.pieces[2] == self.board.pieces[4] and self.board.pieces[2] == self.board.pieces[6]:
                 return True
         return False
+
+if __name__ == '__main__':
+    game = GameMode()
+    player1 = Player("Player1", "X")
+    player2 = Player("Player2", "O")
+    
+    game.player_list.extend([player1, player2])
+    game.board.place_piece(player1, 1)
+    game.board.place_piece(player1, 5)
+    game.board.place_piece(player1, 9)
+    game.board.print_board()
+    print(game.check_board(player1))
