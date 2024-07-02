@@ -4,8 +4,8 @@ class Player:
     '''
     
     def __init__(self, name: str, symbol: str) -> None:
-        self.name = name
-        self.symbol = symbol         
+        self.name: str = name
+        self.symbol: str = symbol         
         
     @classmethod
     def get_player_name(cls) -> str:
@@ -25,7 +25,7 @@ class Player:
         """
         
         position: int = -1
-        done = False
+        done: bool = False
         while not done:
             user_input: str = input("Enter the position to place a piece: ")
             
