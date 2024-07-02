@@ -3,7 +3,7 @@ def display_how_to_play() -> None:
     '''
     Displays the game instructions
     '''
-    display = True
+    display: bool = True
     
     while display:
         print('How To Play')
@@ -18,8 +18,8 @@ def display_how_to_play() -> None:
         except Exception as e:
             print(e)
             
-        user_entry = input('Press Enter to go back to the main menu')
-        display = False
+        input('Press Enter to go back to the main menu')
+        display: bool = False
         clear_console()
 
 def clear_console() -> None:
@@ -44,9 +44,9 @@ def farewell_message() -> None:
 def run_game() -> None:
     """_summary_ Runs the game until the user enters exit
     """
-    run = True
+    run: bool = True
     while run:
-        user_entry = input('Select an option by typing the name: \n\n- Multiplayer\n- Singleplayer\n- How to play\n- Exit\n')
+        user_entry: str = input('Select an option by typing the name: \n\n- Multiplayer\n- Singleplayer\n- How to play\n- Exit\n')
         user_entry.lower()
         
         match user_entry:
@@ -54,8 +54,8 @@ def run_game() -> None:
                 game: Multiplayer = Multiplayer()
                 gamelog: dict[str, object] = game.run()
                 print('Gamelog:')
-                for game in gamelog.keys():
-                    print(f'{game}: {game[0]} in {game[1]} moves')
+                for game, info in gamelog.items():
+                    print(f'{game}: {game[info[0]]} in {game[info[1]]} moves')
                 input('Press Enter to continue: ')
             case 'singleplayer' | 's':
                 pass

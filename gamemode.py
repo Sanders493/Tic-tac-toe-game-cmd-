@@ -79,7 +79,7 @@ class GameMode:
         return self.board.place_piece(player, position)
     
 if __name__ == '__main__':
-    game = GameMode()
+    game: GameMode = GameMode()
     player1 = Player("Player1", "X")
     player2 = Player("Player2", "O")
     
