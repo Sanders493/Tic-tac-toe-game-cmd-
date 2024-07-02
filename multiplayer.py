@@ -24,7 +24,7 @@ class Multiplayer(GameMode):
             return Player("Player 1", "X")
         return Player(name, "X")
     
-    def _get_player2(self) -> None:
+    def _get_player2(self) -> Player:
         """_summary_ Gets player 1 name and symbol
 
         Returns:
