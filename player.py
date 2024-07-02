@@ -15,4 +15,24 @@ class Player:
             str: the name entered by the user
         """
         name = input('Enter player name (Press enter to use default name): ')
-        return name       
+        return name
+
+    def get_position(self) -> int:
+        """_summary_ get the position where the player wants to place a piece
+
+        Returns:
+            int: the position
+        """
+        
+        position: int = -1
+        done = False
+        while not done:
+            user_input: str = input("Enter the position to place a piece: ")
+            
+            if user_input.isnumeric():
+                position = int(user_input)
+                if position > 9 or position < 1:
+                    print("Error: Enter a position between 1 and 9")
+                else:
+                    done = True
+        return position

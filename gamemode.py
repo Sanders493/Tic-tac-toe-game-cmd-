@@ -64,7 +64,19 @@ class GameMode:
             if self.board.pieces[2] == self.board.pieces[4] and self.board.pieces[2] == self.board.pieces[6]:
                 return True
         return False
+    def take_turn(self, player: Player) -> bool:
+        """_summary_ start the turn of a player
 
+        Args:
+            player (Player): the player placing a piece
+
+        Returns:
+            bool: where or not the move was legal
+        """
+        position: int = player.get_position()
+        print(f"{player.name}'s turn")
+        return self.board.place_piece(player, position)
+    
 if __name__ == '__main__':
     game = GameMode()
     player1 = Player("Player1", "X")
